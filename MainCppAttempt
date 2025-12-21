@@ -1,0 +1,39 @@
+/*
+Runtime 0 ms
+Beats 100.00%
+
+Memory 50.18 MB
+Beats 67.89%
+
+Runtime seems to be well done, but might be slightly off, and memory could use some improvement
+In the future might attempt in java 
+*/
+
+class Solution {
+public:
+    int findMaxConsecutiveOnes(vector<int>& nums) {
+        //curr to keep track of current consecutive and max for overall
+        int currNum = 0;
+        int maxNum = 0;
+        //traversing through the list till num size
+        for(int i=0;i<nums.size();i++){
+            //if there is a one add to the current size
+            if(nums[i]==1){
+                currNum++;
+            }
+            // when a zero is encountered, if it is greater than max make it max then set curr to zero
+            else{
+                if(maxNum<currNum){
+                    maxNum = currNum;
+                }
+                currNum=0;
+            }
+        //compare at the end in case it does not end with a 0
+        }
+        if(maxNum<currNum){
+            maxNum = currNum;
+        }
+        return maxNum;
+        
+    }
+};
